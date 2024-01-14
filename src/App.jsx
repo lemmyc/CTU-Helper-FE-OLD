@@ -13,6 +13,7 @@ import "./App.css";
 
 function App() {
   const [response, setResponse] = useState("");
+  const [question, setQuestion] = useState("");
   const [docs, setDocs] = useState([]);
   function validateQuestion(value) {
     let error;
@@ -36,6 +37,8 @@ function App() {
         <Formik
           initialValues={{ question: "" }}
           onSubmit={(values, actions) => {
+            setQuestion(values.question);
+
             fetch("https://right-willing-pika.ngrok-free.app/get-response", {
               method: "POST",
               mode: "cors",
@@ -69,7 +72,7 @@ function App() {
                     <FormLabel>Câu hỏi</FormLabel>
                     <Input
                       {...field}
-                      minWidth="480px"
+                      width={{ base: "360px", md: "640px" }}
                       placeholder="Thời gian học buổi sáng ?"
                     />
                     <FormErrorMessage>{form.errors.question}</FormErrorMessage>
@@ -90,10 +93,13 @@ function App() {
         </Formik>
         {response ? (
           <>
-            <Heading as="h1" size="md" m={[2, 3]}>
+            <Text as="h1" fontSize="xl" my={[2, 3]}>
+              {question}
+            </Text>
+            <Heading as="h1" size="md" my={[2, 3]}>
               Câu trả lời
             </Heading>
-            <Text fontSize="xl" m={[2, 2]} maxW="640px" textAlign="justify">
+            <Text fontSize="xl" my={[2, 3]} maxW="640px" textAlign="justify">
               <div dangerouslySetInnerHTML={{ __html: response }} />
             </Text>
             
