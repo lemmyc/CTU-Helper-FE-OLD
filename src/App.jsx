@@ -32,7 +32,7 @@ function App() {
           CTU-Helper
         </Heading>
         <Text fontSize="xl" m={[1, 2]}>
-          Hỏi đáp những thông tin liên quan đến Quy chế học vụ của ĐHCT
+          Hỏi đáp những thông tin liên quan đến Quy chế, Quy định và Thông báo của Đại học Cần Thơ
         </Text>
         <Formik
           initialValues={{ question: "" }}
